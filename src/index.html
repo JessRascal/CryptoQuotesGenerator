@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoQuotes Generator</title>
+    <link rel="stylesheet" href="/dist/output.css" />
+    <script src="/dist/bundle.js" defer></script>
+  </head>
+  <body>
+    <h1 class="text-3xl m-3 pb-4">CryptoQuotes Generator</h1>
+
+    <div x-data="quoteData" class="p-4 container flex flex-wrap">
+      <!-- card -->
+      <template x-for="quote in quotes">
+        <div class="h-full flex justify-center items-center m-2">
+          <figure
+            class="relative overflow-hidden w-530 h-60 p-10 pt-16 rounded-md bg-indigo-50 text-slate-600"
+          >
+            <!-- <p x-show="showTestMsg">TESTING</p> -->
+
+            <q x-text="quote.text" class="text-2xl italic"></q>
+            <figcaption
+              x-text="quote.author"
+              class="pl-28 text-slate-400"
+            ></figcaption>
+            <!-- TODO: add ref to top-right -->
+            <!-- TODO: add "CryptoQuotes" to bottom-left -->
+            <!-- TODO: add icon (material design community?) -->
+          </figure>
+        </div>
+      </template>
+    </div>
+
+    <script>
+      document.addEventListener('alpine:init', () => {
+        Alpine.data('quoteData', () => ({
+          showTestMsg: true,
+          quotes: null,
+
+          init() {
+            this.fetchQuotes();
+          },
+
+          async fetchQuotes() {
+            const res = await fetch('/src/quotes.json');
+            const quotes = await res.json();
+            this.quotes = quotes;
+          },
+        }));
+      });
+    </script>
+  </body>
+</html>

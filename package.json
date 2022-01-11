@@ -1,0 +1,22 @@
+{
+  "name": "crypto-quotes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tailwind-watch": "npx tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+    "tailwind-minify": "npx tailwindcss -i ./src/input.css -o ./dist/output.css -m",
+    "alpinejs-dev": "npx esbuild ./src/index.js --outfile=dist/bundle.js --bundle"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.0.12"
+  },
+  "dependencies": {
+    "alpinejs": "^3.7.1",
+    "esbuild": "^0.14.11"
+  }
+}
