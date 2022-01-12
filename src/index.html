@@ -11,24 +11,42 @@
   <body>
     <h1 class="text-3xl m-3 pb-4">CryptoQuotes Generator</h1>
 
-    <div x-data="quoteData" class="p-4 container flex flex-wrap">
+    <!-- container -->
+    <div
+      x-data="quoteData"
+      class="p-4 container mx-auto flex flex-wrap justify-center"
+    >
       <!-- card -->
       <template x-for="quote in quotes">
-        <div class="h-full flex justify-center items-center m-2">
-          <figure
-            class="relative overflow-hidden w-530 h-60 p-10 pt-16 rounded-md bg-indigo-50 text-slate-600"
-          >
-            <!-- <p x-show="showTestMsg">TESTING</p> -->
-
-            <q x-text="quote.text" class="text-2xl italic"></q>
+        <div
+          class="w-430 h-265 p-10 m-2 rounded-2xl bg-indigo-50 drop-shadow-md hover:drop-shadow-xl"
+        >
+          <figure class="h-full flex flex-col justify-center">
+            <!-- quote -->
+            <blockquote
+              x-text="quote.text"
+              class="text-2xl text-high-emphasis text-center subpixel-antialiased mb-3"
+            ></blockquote>
+            <!-- citation -->
             <figcaption
-              x-text="quote.author"
-              class="pl-28 text-slate-400"
-            ></figcaption>
-            <!-- TODO: add ref to top-right -->
-            <!-- TODO: add "CryptoQuotes" to bottom-left -->
-            <!-- TODO: add icon (material design community?) -->
+              class="text-medium-emphasis text-center subpixel-antialiased"
+            >
+              <hr />
+              <p x-text="'~ ' + quote.author + ' ~'" class="mt-3 pb-4"></p>
+            </figcaption>
           </figure>
+          <!-- reference -->
+          <p
+            x-text="'#' + quote.ref"
+            class="absolute top-4 right-4 text-xs text-disabled"
+          ></p>
+          <!-- crypto quotes -->
+          <p class="absolute bottom-4 left-4 text-xs text-disabled">
+            CryptoQuotes
+          </p>
+          <!-- TODO: add icon to bottom-right (material design community?) -->
+          <!-- TODO: ability to select font in JSON (set arbitruary) -->
+          <!-- TODO: ability to select bg color and style (gradient, solid, etc.) in JSON -->
         </div>
       </template>
     </div>

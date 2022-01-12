@@ -3,7 +3,15 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        530: '530px',
+        430: '430px',
+      },
+      height: {
+        265: '265px',
+      },
+      textColor: {
+        'high-emphasis': 'rgba(0, 0, 0, 0.87)',
+        'medium-emphasis': 'rgba(0, 0, 0, 0.6)',
+        disabled: 'rgba(0, 0, 0, 0.38)',
       },
     },
   },
