@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CryptoQuotes Generator</title>
     <link rel="stylesheet" href="/dist/output.css" />
+    <link rel="stylesheet" href="mdi-setup.css" />
+    <link
+      href="/node_modules/@mdi/font/css/materialdesignicons.min.css"
+      rel="stylesheet"
+    />
     <script src="/dist/bundle.js" defer></script>
   </head>
   <body>
@@ -19,7 +24,8 @@
       <!-- card -->
       <template x-for="quote in quotes">
         <div
-          class="w-430 h-265 p-10 m-2 rounded-2xl bg-indigo-50 drop-shadow-md hover:drop-shadow-xl"
+          class="w-430 h-265 p-10 m-2 rounded-2xl drop-shadow-md bg-gradient-to-br"
+          :class="quote.fromColor == true ? '' : quote.fromColor"
         >
           <figure class="h-full flex flex-col justify-center">
             <!-- quote -->
@@ -44,6 +50,10 @@
           <p class="absolute bottom-4 left-4 text-xs text-disabled">
             CryptoQuotes
           </p>
+          <!-- icon -->
+          <div class="absolute bottom-4 right-10 text-[#FA52D2]">
+            <i class="mdi mdi-lg" :class="quote.icon" aria-hidden="true"></i>
+          </div>
           <!-- TODO: add icon to bottom-right (material design community?) -->
           <!-- TODO: ability to select font in JSON (set arbitruary) -->
           <!-- TODO: ability to select bg color and style (gradient, solid, etc.) in JSON -->
